@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hospital List </h1>
+
+    <ul>
+
+        {% for hospital in hospitals %}
+            <li> 
+                <a href = "{{ hospital.id }}">{{ hospital.hospital_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+  
+{% endblock content %}
+
+

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h3> {{hospital.hospital_name}} </h3>
+
+    <p>City: {{hospital.hospital_city}}</p>
+    <p>Admin: {{hospital.admin}}</p>
+    
+    {% if hospital.patients_in_this_hospital.exists %}
+        <p>Patients in this hospital</p>
+        {% for x in hospital.patients_in_this_hospital.all %}
+            <li> {{ x.patient_name }}</li>
+        {% endfor %}
+    {% endif %}
+
+    <br>
+
+    <div>
+        <p>
+            <a class="btn btn-info" href="{% url 'add_patient' %}?hospital_id={{ hospital.id }}">New Patient</a>
+            <a class="btn btn-warning" href="{% url 'update' pk=hospital.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'delete' pk=hospital.id %}">Delete</a>
+        </p>
+    </div>
+
+{% endblock content %}
